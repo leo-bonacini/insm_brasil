@@ -1,9 +1,11 @@
 """IBGE geocode utilities."""
+from functools import lru_cache
+
 import pandas as pd
 import requests
-from functools import lru_cache
-from src.utils.config import IBGE_LOCALIDADES_BASE
 from loguru import logger
+
+from src.utils.config import IBGE_LOCALIDADES_BASE
 
 
 @lru_cache(maxsize=1)

@@ -3,7 +3,12 @@ import numpy as np
 import pandas as pd
 from loguru import logger
 
-from src.utils.config import MAPBIOMAS_NATIVE_VEGETATION_CODES, MAPBIOMAS_FOREST_CODES, MAPBIOMAS_AGRO_CODES, MAPBIOMAS_URBAN_CODES
+from src.utils.config import (
+    MAPBIOMAS_AGRO_CODES,
+    MAPBIOMAS_FOREST_CODES,
+    MAPBIOMAS_NATIVE_VEGETATION_CODES,
+    MAPBIOMAS_URBAN_CODES,
+)
 
 
 def compute_base_indicators(

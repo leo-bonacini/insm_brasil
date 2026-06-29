@@ -2,8 +2,8 @@
 import numpy as np
 import pandas as pd
 import pytest
-from src.models.index_builder import build_insm, _pca_weights, _entropy_weights
-from sklearn.decomposition import PCA
+
+from src.models.index_builder import _entropy_weights, build_insm
 
 
 @pytest.fixture

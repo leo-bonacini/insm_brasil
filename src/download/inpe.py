@@ -1,15 +1,13 @@
 """INPE data downloaders: PRODES desmatamento + Queimadas focos de calor."""
-import zipfile
 from pathlib import Path
 
 import pandas as pd
 import requests
 from loguru import logger
 
-from src.utils.config import RAW_DIR, HTTP_TIMEOUT
-from src.utils.http import download_file, get_json
+from src.utils.config import HTTP_TIMEOUT, RAW_DIR
 from src.utils.geocodes import normalize_geocodigo
-
+from src.utils.http import download_file
 
 # ── PRODES Desmatamento ───────────────────────────────────────────────────────
 

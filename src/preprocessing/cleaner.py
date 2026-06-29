@@ -1,6 +1,7 @@
 """Clean and standardize raw SIDRA/API data into normalized DataFrames."""
 import pandas as pd
 from loguru import logger
+
 from src.utils.geocodes import normalize_geocodigo
 
 

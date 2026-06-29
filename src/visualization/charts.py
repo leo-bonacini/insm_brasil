@@ -1,11 +1,11 @@
 """Generate static and interactive visualizations for the sustainability report."""
+from pathlib import Path
+
+import geopandas as gpd
 import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-import geopandas as gpd
-from pathlib import Path
 from loguru import logger
 
 from src.utils.config import EXTERNAL_DIR, FIGURES_DIR

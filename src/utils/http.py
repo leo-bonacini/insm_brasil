@@ -1,7 +1,6 @@
 """HTTP utilities with retry, progress bar and checksum."""
 import hashlib
 import time
-import warnings
 from pathlib import Path
 
 import requests

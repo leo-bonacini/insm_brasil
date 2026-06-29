@@ -4,9 +4,16 @@ from pathlib import Path
 import pandas as pd
 from loguru import logger
 
-from src.utils.config import MAPBIOMAS_STATS_URL, MAPBIOMAS_DEFOR_URL, RAW_DIR, MAPBIOMAS_NATIVE_VEGETATION_CODES, MAPBIOMAS_FOREST_CODES, MAPBIOMAS_AGRO_CODES, MAPBIOMAS_URBAN_CODES
-from src.utils.http import download_file
+from src.utils.config import (
+    MAPBIOMAS_AGRO_CODES,
+    MAPBIOMAS_FOREST_CODES,
+    MAPBIOMAS_NATIVE_VEGETATION_CODES,
+    MAPBIOMAS_STATS_URL,
+    MAPBIOMAS_URBAN_CODES,
+    RAW_DIR,
+)
 from src.utils.geocodes import normalize_geocodigo
+from src.utils.http import download_file
 
 
 def download_mapbiomas_stats() -> Path:

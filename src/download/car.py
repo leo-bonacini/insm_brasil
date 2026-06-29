@@ -5,9 +5,8 @@ import pandas as pd
 import requests
 from loguru import logger
 
-from src.utils.config import RAW_DIR, HTTP_TIMEOUT
+from src.utils.config import HTTP_TIMEOUT, RAW_DIR
 from src.utils.geocodes import normalize_geocodigo
-
 
 CAR_API_BASE = "https://www.car.gov.br/api/v2"
 
@@ -24,7 +23,6 @@ def download_car_stats() -> Path:
     frames = []
 
     # SICAR public API - national totals by municipality
-    url = "https://www.car.gov.br/publico/municipios/downloads"
     try:
         # Try the statistics endpoint
         api_url = "https://www.car.gov.br/api/v2/municipio/imoveis"

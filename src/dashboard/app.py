@@ -1,11 +1,10 @@
 """Streamlit Dashboard: Ranking Nacional de Sustentabilidade Municipal."""
+from pathlib import Path
+
 import pandas as pd
-import numpy as np
-import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
-from pathlib import Path
-import io
+import streamlit as st
 
 # ── Page config ──────────────────────────────────────────────────────────────
 st.set_page_config(

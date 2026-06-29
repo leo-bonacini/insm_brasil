@@ -1,14 +1,12 @@
 """ETL pipeline: clean raw data, compute features, build DuckDB data warehouse."""
-import sys
-from pathlib import Path
 
 import duckdb
 import pandas as pd
 from loguru import logger
 
-from src.utils.config import DUCKDB_PATH, PARQUET_DIR, RAW_DIR, ensure_dirs
-from src.preprocessing.cleaner import clean_pib, clean_populacao, clean_pam, clean_ppm, clean_area
 from src.feature_engineering.indicators import compute_base_indicators, compute_temporal_change
+from src.preprocessing.cleaner import clean_area, clean_pam, clean_pib, clean_populacao, clean_ppm
+from src.utils.config import DUCKDB_PATH, PARQUET_DIR, RAW_DIR, ensure_dirs
 
 
 def load_raw() -> dict[str, pd.DataFrame]:

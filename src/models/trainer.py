@@ -1,19 +1,18 @@
 """Train ML models to predict INSM score and explain with SHAP."""
 import warnings
+
+import lightgbm as lgb
 import numpy as np
 import pandas as pd
-from loguru import logger
-from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
-from sklearn.linear_model import ElasticNet
-from sklearn.model_selection import cross_val_score, KFold
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from sklearn.preprocessing import StandardScaler
-from sklearn.impute import SimpleImputer
-from sklearn.pipeline import Pipeline
-from sklearn.cluster import KMeans, AgglomerativeClustering
-from sklearn.metrics import silhouette_score
 import xgboost as xgb
-import lightgbm as lgb
+from loguru import logger
+from sklearn.cluster import KMeans
+from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
+from sklearn.impute import SimpleImputer
+from sklearn.linear_model import ElasticNet
+from sklearn.metrics import r2_score, silhouette_score
+from sklearn.model_selection import KFold, cross_val_score
+from sklearn.preprocessing import StandardScaler
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
@@ -37,7 +36,6 @@ def train_and_evaluate(X: pd.DataFrame, y: pd.Series, feature_names: list[str]) 
     """Train multiple models, evaluate with 5-fold CV, return best model and metrics."""
     # Drop columns that are all-NaN before imputing
     X = X.dropna(axis=1, how="all")
-    feature_names = X.columns.tolist()
     imputer = SimpleImputer(strategy="median")
     X_imp = pd.DataFrame(imputer.fit_transform(X), columns=X.columns)
     scaler = StandardScaler()

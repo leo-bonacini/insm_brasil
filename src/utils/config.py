@@ -1,6 +1,5 @@
 """Central configuration and path management."""
 from pathlib import Path
-import os
 
 # Project root: the insm_brasil directory
 ROOT = Path(__file__).parent.parent.parent.resolve()

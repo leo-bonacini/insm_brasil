@@ -1,23 +1,22 @@
 """Main download orchestrator: runs all source downloaders in sequence."""
-import sys
-from pathlib import Path
 
 from loguru import logger
-from src.utils.config import ensure_dirs
+
+from src.download.car import download_car_stats
 from src.download.ibge import (
+    download_area_territorial,
+    download_pam,
     download_pib_municipal,
     download_populacao,
-    download_area_territorial,
-    download_shapefile_municipios,
-    download_shapefile_biomas,
-    download_pam,
     download_ppm,
+    download_shapefile_biomas,
+    download_shapefile_municipios,
 )
+from src.download.inep import download_ideb
 from src.download.inpe import download_prodes_tabular, download_queimadas
 from src.download.mapbiomas import download_mapbiomas_stats
 from src.download.siconfi import download_finbra, download_gastos_ambientais
-from src.download.inep import download_ideb
-from src.download.car import download_car_stats
+from src.utils.config import ensure_dirs
 
 
 def run_all(years: list[int] | None = None) -> dict:

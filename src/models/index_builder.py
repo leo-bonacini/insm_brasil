@@ -2,11 +2,9 @@
 import numpy as np
 import pandas as pd
 from loguru import logger
-from scipy.stats import zscore
-from sklearn.preprocessing import MinMaxScaler
 from sklearn.decomposition import PCA
 from sklearn.impute import SimpleImputer
-
+from sklearn.preprocessing import MinMaxScaler
 
 # Indicators included in the INSM with their direction (1 = higher is better, -1 = higher is worse)
 INDICATOR_CONFIG = {
@@ -154,6 +152,6 @@ if __name__ == "__main__":
     print("\n=== BOTTOM 10 ===")
     print(result[avail_cols].tail(10).to_string(index=False))
 
-    print(f"\n=== WEIGHTS ===")
+    print("\n=== WEIGHTS ===")
     for k, v in sorted(weights.items(), key=lambda x: -x[1]):
         print(f"  {INDICATOR_CONFIG.get(k, {}).get('label', k)}: {v:.4f}")

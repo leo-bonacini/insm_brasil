@@ -10,12 +10,10 @@ from src.utils.config import (
     IBGE_BIOMAS_ZIP,
     IBGE_MUNICIPIOS_ZIP,
     IBGE_SIDRA_BASE,
-    IBGE_SIDRA_MUNICIPIOS,
     RAW_DIR,
 )
-from src.utils.http import download_file, get_json
 from src.utils.geocodes import normalize_geocodigo
-
+from src.utils.http import download_file, get_json
 
 # ── SIDRA helper ──────────────────────────────────────────────────────────────
 

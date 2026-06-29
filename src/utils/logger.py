@@ -1,6 +1,8 @@
 """Logging configuration using loguru."""
 import sys
+
 from loguru import logger
+
 from src.utils.config import ROOT
 
 LOG_PATH = ROOT / "logs"

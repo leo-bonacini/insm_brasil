@@ -5,9 +5,8 @@ import pandas as pd
 from loguru import logger
 
 from src.utils.config import RAW_DIR
-from src.utils.http import download_file
 from src.utils.geocodes import normalize_geocodigo
-
+from src.utils.http import download_file
 
 IDEB_URLS = {
     2021: "https://download.inep.gov.br/educacao_basica/portal_ideb/planilhas_para_download/2021/divulgacao_anos_iniciais_municipios_2021.xlsx",

@@ -1,9 +1,9 @@
 """Tests for preprocessing and cleaning functions."""
 import pandas as pd
 import pytest
-from src.preprocessing.cleaner import clean_pib, clean_populacao, clean_pam, clean_area
-from src.utils.geocodes import normalize_geocodigo
 
+from src.preprocessing.cleaner import clean_area, clean_pib, clean_populacao
+from src.utils.geocodes import normalize_geocodigo
 
 # ── Fixtures ──────────────────────────────────────────────────────────────────
 

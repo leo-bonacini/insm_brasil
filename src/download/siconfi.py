@@ -5,7 +5,7 @@ import pandas as pd
 import requests
 from loguru import logger
 
-from src.utils.config import RAW_DIR, SICONFI_BASE, HTTP_TIMEOUT
+from src.utils.config import HTTP_TIMEOUT, RAW_DIR, SICONFI_BASE
 from src.utils.geocodes import normalize_geocodigo
 
 
