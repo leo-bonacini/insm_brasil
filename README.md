@@ -90,10 +90,10 @@ municipal_sustainability/
 pip install uv && uv venv .venv && source .venv/bin/activate
 uv pip install -e .
 
-python -m pipeline.download    # download de dados
-python -m pipeline.transform   # ETL + features
-python -m src.models.index_builder  # INSM
-python -m src.models.trainer   # ML
+python3 -m pipeline.download    # download de dados
+python3 -m pipeline.transform   # ETL + features
+python3 -m src.models.index_builder  # INSM
+python3 -m src.models.trainer   # ML
 streamlit run src/dashboard/app.py  # dashboard
 ```
 
