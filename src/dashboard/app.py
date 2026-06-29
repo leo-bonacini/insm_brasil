@@ -115,7 +115,7 @@ with tab1:
             )
             fig_map.update_geos(fitbounds="locations", visible=False)
             fig_map.update_layout(height=600, margin={"r": 0, "t": 10, "l": 0, "b": 0})
-            st.plotly_chart(fig_map, use_container_width=True)
+            st.plotly_chart(fig_map, width='stretch')
         else:
             st.info("Nenhum dado geográfico disponível com os filtros atuais.")
     else:
@@ -136,7 +136,7 @@ with tab2:
         labels={"insm_score": "INSM", "municipio": "Município"},
     )
     fig_bar.update_layout(height=600)
-    st.plotly_chart(fig_bar, use_container_width=True)
+    st.plotly_chart(fig_bar, width='stretch')
 
     # Table
     show_cols = ["insm_ranking", "municipio", "uf_sigla", "insm_score", "pct_nativa",
@@ -153,7 +153,7 @@ with tab2:
             "pib_per_capita": "PIB per capita",
             "cluster_label": "Cluster",
         }),
-        use_container_width=True,
+        width='stretch',
     )
 
     # Export
@@ -173,7 +173,7 @@ with tab3:
             opacity=0.6, log_x=True,
             labels={"pib_per_capita": "PIB per capita (R$)", "insm_score": "INSM", "uf_sigla": "UF"},
         )
-        st.plotly_chart(fig_scatter, use_container_width=True)
+        st.plotly_chart(fig_scatter, width='stretch')
 
     with col_r:
         st.subheader("Variação de Vegetação Nativa (2015-2021)")
@@ -184,7 +184,7 @@ with tab3:
             labels={"variacao_nativa_pp": "Variação (pontos percentuais)"},
         )
         fig_change.add_vline(x=0, line_dash="dash", line_color="red")
-        st.plotly_chart(fig_change, use_container_width=True)
+        st.plotly_chart(fig_change, width='stretch')
 
     if not fi.empty:
         st.subheader("Importância das Variáveis (LightGBM)")
@@ -193,7 +193,7 @@ with tab3:
             x="importance", y="feature", orientation="h",
             color="importance", color_continuous_scale="Blues",
         )
-        st.plotly_chart(fig_fi, use_container_width=True)
+        st.plotly_chart(fig_fi, width='stretch')
 
 # TAB 4: Clusters
 with tab4:
@@ -207,7 +207,7 @@ with tab4:
             labels={"insm_score": "INSM", "cluster_label": "Perfil"},
         )
         fig_box.update_xaxes(tickangle=15)
-        st.plotly_chart(fig_box, use_container_width=True)
+        st.plotly_chart(fig_box, width='stretch')
 
         # Cluster summary table
         summary = (
@@ -220,7 +220,7 @@ with tab4:
             )
             .round(2)
         )
-        st.dataframe(summary, use_container_width=True)
+        st.dataframe(summary, width='stretch')
     else:
         st.info("Clustering não disponível.")
 
@@ -268,7 +268,7 @@ with tab5:
                 polar=dict(radialaxis=dict(range=[0, 100])),
                 title=f"Perfil de Indicadores: {sel_mun}",
             )
-            st.plotly_chart(fig_radar, use_container_width=True)
+            st.plotly_chart(fig_radar, width='stretch')
 
 # Footer
 st.markdown("---")
