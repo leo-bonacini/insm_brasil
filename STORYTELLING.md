@@ -217,6 +217,30 @@ O Brasil tem 8,5 milhões de km². Saber onde ainda existe natureza para preserv
 
 ---
 
+## O que o índice não captura
+
+Todo modelo é uma simplificação. O INSM foi construído com rigor, mas há premissas que moldam os resultados e limitações que o leitor precisa conhecer.
+
+**As notas são relativas, não absolutas.** O score de 0 a 100 é calculado ancorando o pior município atual em 0 e o melhor em 100. Isso significa que a nota de cada município depende do conjunto inteiro dos 5.572. Se o conjunto mudar, as notas mudam. Scores de anos diferentes não podem ser comparados diretamente sem recalibração completa.
+
+**Dados ausentes são preenchidos com a mediana nacional.** Quando um indicador está ausente para um município — PIB não reportado, cobertura MapBiomas incompleta — o valor da mediana de todos os outros municípios é imputado. O município não é excluído da análise, mas sua nota pode não refletir a situação real.
+
+**O índice mede principalmente sustentabilidade ambiental.** O PIB per capita tem peso de apenas 1,2% na composição final. Isso é consequência direta do método: o EWM dá menos importância a indicadores com baixa variação relativa entre municípios, e o PIB varia proporcionalmente menos do que a vegetação ao comparar um município amazônico com um paulista. Na prática, o INSM é quase inteiramente um índice ambiental. Dimensões sociais como saneamento, saúde e educação não estão incluídas nesta versão.
+
+**Todo uso agropecuário recebe o mesmo peso negativo.** O modelo não distingue entre monocultura de soja em escala industrial e agricultura familiar diversificada. Sistemas agroflorestais e cultivos perenes recebem a mesma penalização que pastagem degradada. Isso é uma limitação do dado disponível: o MapBiomas classifica o uso do solo, não a qualidade ou intensidade do uso.
+
+**Municípios grandes diluem sua heterogeneidade interna.** Altamira (PA) cobre 159.000 km² — maior que a Grécia. Uma média municipal esconde a diferença entre floresta preservada no oeste e áreas desmatadas próximas a rodovias. Quanto maior o município, mais o indicador médio mascara a variação interna.
+
+**Os dados de desmatamento do PRODES e de focos de calor do Queimadas não foram incorporados.** As APIs do INPE não retornaram dados completos no momento da extração. Esses indicadores aparecem como fontes listadas, mas não integram o cálculo nesta versão. Municípios com histórico recente de desmatamento intenso podem ter a nota superestimada.
+
+**A vegetação nativa inclui estágios variados de conservação.** O MapBiomas classifica formações campestres, restingas, apicuns e caatinga como vegetação nativa, ao lado de floresta primária densa. Uma área de Caatinga degradada contribui positivamente para o INSM da mesma forma que uma floresta amazônica intacta. A qualidade ecológica da vegetação não é capturada pelo indicador de cobertura.
+
+**A derivação de pesos usa apenas 3 componentes do PCA.** Com 8 indicadores disponíveis, a restrição a 3 componentes significa que parte da estrutura de variação dos dados não influencia os pesos finais. Essa é uma escolha de parametrização que pode ser revisada em versões futuras.
+
+Conhecer essas premissas não invalida o índice — invalida a leitura ingênua do número preciso. Um INSM de 72,4 não é necessariamente "melhor" do que 71,9 de forma estatisticamente significativa. As grandes diferenças são robustas: Amazonas versus São Paulo, Serra do Navio versus Lajedão. As diferenças marginais entre municípios próximos no ranking exigem análise mais cuidadosa antes de qualquer uso em política pública.
+
+---
+
 ## O que os dados dizem
 
 O INSM é um diagnóstico. Não é sentença.

@@ -217,6 +217,30 @@ Brazil covers 8.5 million km². Knowing where nature still exists to be preserve
 
 ---
 
+## What the index does not capture
+
+Every model is a simplification. The INSM was built with rigor, but there are assumptions that shape the results and limitations the reader needs to know.
+
+**Scores are relative, not absolute.** The 0-to-100 score is computed by anchoring the current worst municipality at 0 and the best at 100. That means every municipality's score depends on the full set of 5,572. If the set changes, scores change. Scores from different years cannot be compared directly without a full recalibration.
+
+**Missing data is filled with the national median.** When an indicator is absent for a municipality — unreported GDP, incomplete MapBiomas coverage — the median value across all other municipalities is imputed. The municipality is not excluded from the analysis, but its score may not reflect the actual situation.
+
+**The index primarily measures environmental sustainability.** GDP per capita carries a weight of just 1.2% in the final composition. This follows directly from the method: the EWM assigns less importance to indicators with low relative variation across municipalities, and GDP varies proportionally less than vegetation when comparing an Amazonian municipality to one in São Paulo. In practice, the INSM is almost entirely an environmental index. Social dimensions such as sanitation, health, and education are not included in this version.
+
+**All agricultural land use receives the same negative weight.** The model does not distinguish between large-scale soy monoculture and diversified family farming. Agroforestry systems and perennial crops receive the same penalty as degraded pasture. This is a limitation of the available data: MapBiomas classifies land use, not the quality or intensity of that use.
+
+**Large municipalities dilute their internal heterogeneity.** Altamira (PA) covers 159,000 km² — larger than Greece. A municipal average hides the difference between intact forest in the west and deforested areas near highways. The larger the municipality, the more the average indicator masks internal variation.
+
+**PRODES deforestation and fire hotspot data were not incorporated.** The INPE APIs did not return complete data at the time of extraction. These indicators appear as listed sources but are not part of the index calculation in this version. Municipalities with a recent history of heavy deforestation may have an overstated score.
+
+**Native vegetation includes varied stages of conservation.** MapBiomas classifies grassland formations, restinga, apicum, and caatinga as native vegetation alongside dense primary forest. A degraded patch of Caatinga contributes positively to the INSM in the same way as an intact Amazonian forest. The ecological quality of the vegetation is not captured by the coverage indicator.
+
+**Weight derivation uses only 3 PCA components.** With 8 available indicators, capping at 3 components means part of the data's variation structure does not influence the final weights. This is a parameterization choice that can be revisited in future versions.
+
+Knowing these assumptions does not invalidate the index — it invalidates a naive reading of the precise number. An INSM of 72.4 is not necessarily "better" than 71.9 in any statistically meaningful way. The large differences are robust: Amazonas versus São Paulo, Serra do Navio versus Lajedão. Marginal differences between nearby municipalities in the ranking require more careful analysis before any use in public policy.
+
+---
+
 ## What the data says
 
 The INSM is a diagnosis. Not a verdict.
