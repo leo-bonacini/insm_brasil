@@ -86,7 +86,7 @@ def _aggregate_mapbiomas(mb: pd.DataFrame) -> pd.DataFrame:
             "mb_florestal_ha": g.loc[g["is_forest"], "area_ha"].sum(),
             "mb_agro_ha": g.loc[g["is_agro"], "area_ha"].sum(),
             "mb_urbana_ha": g.loc[g["is_urban"], "area_ha"].sum(),
-        }))
+        }), include_groups=False)
         .reset_index()
         .set_index("geocodigo")
     )
@@ -145,7 +145,7 @@ def compute_temporal_change(mapbiomas: pd.DataFrame, year_start: int = 2015, yea
         agg = mb_y.groupby("geocodigo").apply(lambda g: pd.Series({
             "native_ha": g.loc[g["is_native"], "area_ha"].sum(),
             "total_ha": g["area_ha"].sum(),
-        }))
+        }), include_groups=False)
         agg[f"pct_nativa_{year}"] = agg["native_ha"] / agg["total_ha"].replace(0, np.nan) * 100
         return agg[f"pct_nativa_{year}"]
 
