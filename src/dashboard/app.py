@@ -35,6 +35,8 @@ def load_geodata():
         import geopandas as gpd
         gdf = gpd.read_file(shp).to_crs(epsg=4326)
         gdf["geocodigo"] = gdf["CD_MUN"].astype(str).str[:7]
+        # Simplify polygons to reduce GeoJSON payload from ~600 MB to ~8 MB
+        gdf["geometry"] = gdf["geometry"].simplify(0.01, preserve_topology=True)
         return gdf
     return None
 
