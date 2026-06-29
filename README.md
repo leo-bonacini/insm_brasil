@@ -87,14 +87,20 @@ municipal_sustainability/
 ## Como Reproduzir
 
 ```bash
-pip install uv && uv venv .venv && source .venv/bin/activate
-uv pip install -e .
+pip install uv
+uv sync --extra dev              # cria .venv e instala todas as dependências
 
-python3 -m pipeline.download    # download de dados
-python3 -m pipeline.transform   # ETL + features
-python3 -m src.models.index_builder  # INSM
-python3 -m src.models.trainer   # ML
-streamlit run src/dashboard/app.py  # dashboard
+uv run python -m pipeline.download       # download de dados
+uv run python -m pipeline.transform      # ETL + features
+uv run python -m src.models.index_builder  # INSM
+uv run python -m src.models.trainer      # ML
+uv run streamlit run src/dashboard/app.py  # dashboard
+```
+
+Ou via Makefile:
+
+```bash
+make setup && make all
 ```
 
 ### Docker
