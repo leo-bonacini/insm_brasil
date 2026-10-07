@@ -5,7 +5,7 @@ import pytest
 from src.preprocessing.cleaner import clean_area, clean_pib, clean_populacao
 from src.utils.geocodes import normalize_geocodigo
 
-# ── Fixtures ──────────────────────────────────────────────────────────────────
+# Fixtures
 
 @pytest.fixture
 def raw_pib_sidra():
@@ -39,7 +39,7 @@ def raw_area():
     ])
 
 
-# ── Tests ─────────────────────────────────────────────────────────────────────
+# Tests
 
 def test_clean_pib_basic(raw_pib_sidra):
     df = clean_pib(raw_pib_sidra)
@@ -90,7 +90,7 @@ def test_normalize_geocodigo_float():
     assert normalize_geocodigo(3550308.0) == "3550308"
 
 
-# ── Integration: full cleaning pipeline ──────────────────────────────────────
+# Integration: full cleaning pipeline
 
 def test_clean_pipeline_integration(raw_pib_sidra, raw_pop_sidra, raw_area):
     pib = clean_pib(raw_pib_sidra)

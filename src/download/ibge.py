@@ -15,7 +15,7 @@ from src.utils.config import (
 from src.utils.geocodes import normalize_geocodigo
 from src.utils.http import download_file, get_json
 
-# ── SIDRA helper ──────────────────────────────────────────────────────────────
+# SIDRA helper
 
 UF_CODES = [11,12,13,14,15,16,17,21,22,23,24,25,26,27,28,29,31,32,33,35,41,42,43,50,51,52,53]
 
@@ -47,7 +47,7 @@ def _sidra_query_all_municipalities(
     return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
 
 
-# ── PIB Municipal ─────────────────────────────────────────────────────────────
+# PIB Municipal
 
 def download_pib_municipal(years: list[int] | None = None) -> Path:
     """Download PIB Municipal from SIDRA table 5938."""
@@ -96,7 +96,7 @@ def download_pib_municipal(years: list[int] | None = None) -> Path:
     return out
 
 
-# ── População ─────────────────────────────────────────────────────────────────
+# População
 
 def download_populacao(years: list[int] | None = None) -> Path:
     """Download estimated population from SIDRA table 6579."""
@@ -146,7 +146,7 @@ def download_populacao(years: list[int] | None = None) -> Path:
     return out
 
 
-# ── Área Territorial ──────────────────────────────────────────────────────────
+# Área Territorial
 
 def download_area_territorial() -> Path:
     """Download municipal area from IBGE SIDRA (table 9601) and localidades API."""
@@ -209,7 +209,7 @@ def download_area_territorial() -> Path:
     return out
 
 
-# ── Shapefile Municipal ───────────────────────────────────────────────────────
+# Shapefile Municipal
 
 def download_shapefile_municipios() -> Path:
     """Download and extract IBGE 2022 municipal shapefile."""
@@ -228,7 +228,7 @@ def download_shapefile_municipios() -> Path:
     return shp_file
 
 
-# ── Shapefile Biomas ─────────────────────────────────────────────────────────
+# Shapefile Biomas
 
 def download_shapefile_biomas() -> Path:
     """Download and extract IBGE biomes shapefile."""
@@ -247,7 +247,7 @@ def download_shapefile_biomas() -> Path:
     return shp_candidates[0] if shp_candidates else biomas_dir
 
 
-# ── Produção Agrícola Municipal ────────────────────────────────────────────────
+# Produção Agrícola Municipal
 
 def download_pam(years: list[int] | None = None) -> Path:
     """Download Produção Agrícola Municipal (PAM) from SIDRA table 5457."""
@@ -287,7 +287,7 @@ def download_pam(years: list[int] | None = None) -> Path:
     return out
 
 
-# ── Produção Pecuária Municipal ───────────────────────────────────────────────
+# Produção Pecuária Municipal
 
 def download_ppm(years: list[int] | None = None) -> Path:
     """Download Produção Pecuária Municipal (PPM) from SIDRA table 3939."""

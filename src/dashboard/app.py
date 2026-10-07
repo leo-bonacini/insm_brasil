@@ -6,7 +6,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-# ── Page config ──────────────────────────────────────────────────────────────
+# Page config
 st.set_page_config(
     page_title="Ranking Sustentabilidade Municipal",
     page_icon="🌿",
@@ -18,7 +18,7 @@ PARQUET_DIR = Path(__file__).parent.parent.parent / "data" / "parquet"
 EXTERNAL_DIR = Path(__file__).parent.parent.parent / "data" / "external"
 
 
-# ── Data loading ──────────────────────────────────────────────────────────────
+# Data loading
 @st.cache_data
 def load_data():
     insm = pd.read_parquet(PARQUET_DIR / "insm_ranking.parquet")
@@ -48,7 +48,7 @@ display = insm.merge(clusters[["geocodigo", "cluster_label"]], on="geocodigo", h
 display = display.merge(master[["geocodigo", "pct_nativa", "pct_florestal", "pct_agro",
                                  "pib_per_capita", "variacao_nativa_pp"]], on="geocodigo", how="left")
 
-# ── Sidebar filters ───────────────────────────────────────────────────────────
+# Sidebar filters
 st.sidebar.title("🌿 Filtros")
 st.sidebar.markdown("---")
 
@@ -78,12 +78,12 @@ if sel_clusters:
 
 filtered = display[mask].copy()
 
-# ── Main layout ───────────────────────────────────────────────────────────────
+# Main layout
 st.title("🌿 Ranking Nacional de Sustentabilidade dos Municípios Brasileiros")
 st.markdown("**Índice Nacional de Sustentabilidade Municipal (INSM)** · Dados: IBGE, MapBiomas, INPE · Ano base: 2021")
 st.markdown("---")
 
-# ── KPIs ─────────────────────────────────────────────────────────────────────
+# KPIs
 c1, c2, c3, c4, c5 = st.columns(5)
 c1.metric("Municípios analisados", f"{len(filtered):,}")
 c2.metric("INSM médio", f"{filtered['insm_score'].mean():.1f}")
@@ -93,7 +93,7 @@ c5.metric("PIB per capita médio", f"R$ {filtered['pib_per_capita'].mean():,.0f}
 
 st.markdown("---")
 
-# ── Tabs ──────────────────────────────────────────────────────────────────────
+# Tabs
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["🗺️ Mapa", "📊 Ranking", "🔍 Análise", "🏘️ Clusters", "📌 Perfil"])
 
 # TAB 1: Map

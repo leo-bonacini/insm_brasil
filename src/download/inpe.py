@@ -9,7 +9,7 @@ from src.utils.config import HTTP_TIMEOUT, RAW_DIR
 from src.utils.geocodes import normalize_geocodigo
 from src.utils.http import download_file
 
-# ── PRODES Desmatamento ───────────────────────────────────────────────────────
+# PRODES Desmatamento
 
 PRODES_API_BASE = "https://terrabrasilis.dpi.inpe.br/queimadas/prodes-api"
 
@@ -105,7 +105,7 @@ def download_prodes_tabular() -> Path:
     return out
 
 
-# ── Queimadas / Focos de Calor ────────────────────────────────────────────────
+# Queimadas / Focos de Calor
 
 def download_queimadas(years: list[int] | None = None) -> Path:
     """Download fire foci counts per municipality from INPE Queimadas."""

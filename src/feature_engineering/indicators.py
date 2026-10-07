@@ -26,7 +26,7 @@ def compute_base_indicators(
     """
     logger.info(f"Computing base indicators for year {ref_year}...")
 
-    # ── 1. Filter reference year ─────────────────────────────────────────────
+    # 1. Filter reference year
     pib_y = pib[pib["ano"] == ref_year][["geocodigo", "pib_mil_reais"]].drop_duplicates("geocodigo")
     pop_y = pop[pop["ano"] == ref_year][["geocodigo", "municipio", "populacao"]].drop_duplicates("geocodigo")
     pam_y = pam[pam["ano"] == ref_year].drop_duplicates("geocodigo") if not pam.empty else pd.DataFrame()
@@ -44,7 +44,7 @@ def compute_base_indicators(
 
     mb_agg = _aggregate_mapbiomas(mb_y) if not mb_y.empty else pd.DataFrame()
 
-    # ── 3. Join all datasets ─────────────────────────────────────────────────
+    # 3. Join all datasets
     df = area.set_index("geocodigo")
     # Drop duplicate columns before joining
     pop_join = pop_y.drop(columns=[c for c in pop_y.columns if c in area.columns and c != "geocodigo"]).set_index("geocodigo")
@@ -60,7 +60,7 @@ def compute_base_indicators(
 
     df = df.reset_index().rename(columns={"index": "geocodigo"})
 
-    # ── 4. Derived indicators ────────────────────────────────────────────────
+    # 4. Derived indicators
     df = _compute_derived(df)
 
     logger.success(f"Base indicators computed: {len(df):,} municipalities, {len(df.columns)} features")

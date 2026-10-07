@@ -51,18 +51,18 @@ def build_insm(master: pd.DataFrame) -> pd.DataFrame:
     scaler = MinMaxScaler(feature_range=(0, 100))
     X_norm = pd.DataFrame(scaler.fit_transform(X_imp), columns=X.columns, index=X.index)
 
-    # ── PCA-based weights ────────────────────────────────────────────────────
+    # PCA-based weights
     n_components = min(len(available), 3)
     pca = PCA(n_components=n_components, random_state=42)
     pca.fit(X_norm)
     pca_weights = _pca_weights(pca, X_norm.columns.tolist())
     logger.info(f"PCA weights: {pca_weights}")
 
-    # ── Entropy Weight Method ────────────────────────────────────────────────
+    # Entropy Weight Method
     ewm_weights = _entropy_weights(X_norm)
     logger.info(f"EWM weights: {ewm_weights}")
 
-    # ── Combined weights (average of PCA and EWM) ────────────────────────────
+    # Combined weights (average of PCA and EWM)
     w_pca = np.array([pca_weights[c] for c in available])
     w_ewm = np.array([ewm_weights[c] for c in available])
     w_combined = (w_pca + w_ewm) / 2
@@ -71,7 +71,7 @@ def build_insm(master: pd.DataFrame) -> pd.DataFrame:
     final_weights = dict(zip(available, w_combined))
     logger.info(f"Final combined weights: {final_weights}")
 
-    # ── INSM Score ────────────────────────────────────────────────────────────
+    # INSM Score
     X_mat = X_norm[available].values
     score = X_mat @ w_combined  # weighted sum already in [0,100] domain
 
@@ -80,7 +80,7 @@ def build_insm(master: pd.DataFrame) -> pd.DataFrame:
     score_min, score_max = score_series.min(), score_series.max()
     insm = (score_series - score_min) / (score_max - score_min) * 100
 
-    # ── Assemble result ───────────────────────────────────────────────────────
+    # Assemble result
     result = df[["geocodigo", "municipio", "uf_sigla", "area_km2", "populacao", "pib_mil_reais"]].copy()
     result["insm_score"] = insm.values
     result["insm_ranking"] = result["insm_score"].rank(ascending=False, method="min").astype(int)

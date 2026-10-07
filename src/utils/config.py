@@ -21,7 +21,7 @@ DUCKDB_PATH = DATA_DIR / "sustainability.duckdb"
 RANDOM_SEED = 42
 REFERENCE_YEAR = 2021  # Latest year with complete multi-source data
 
-# IBGE API
+# Ibge API
 IBGE_SIDRA_BASE = "https://servicodados.ibge.gov.br/api/v3/agregados"
 # Use N6[all] (bracket notation) for municipality queries - N6/all returns 500
 IBGE_SIDRA_MUNICIPIOS = "N6[all]"
